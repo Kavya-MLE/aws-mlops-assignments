@@ -3,6 +3,10 @@ import boto3
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def welcome_message():
+    return jsonify({"message": "Welcome to flask app!"})
+
 @app.route('/list_objects', methods=['GET'])
 def list_files():
     bucket_name = "tiger-mle-pg"  # Replace with your actual bucket name
