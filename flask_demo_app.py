@@ -63,7 +63,7 @@ def list_files():
 
     try:
         response = s3.list_objects_v2(Bucket=bucket_name, Prefix=folder_name)
-
+        print("response!!!!!", response)
         if 'Contents' in response:
             files = [obj['Key'] for obj in response['Contents']]
             return jsonify({"files": files})
@@ -74,4 +74,4 @@ def list_files():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8085)
